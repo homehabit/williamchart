@@ -43,6 +43,9 @@ class DonutChartView @JvmOverloads constructor(
     @Suppress("MemberVisibilityCanBePrivate")
     var donutTotal = defaultDonutTotal
 
+    @Suppress("MemberVisibilityCanBePrivate")
+    var donutStartAngle = defaultStartAngle
+
     var animation: ChartAnimation<DonutDataPoint> = DefaultDonutAnimation()
 
     private lateinit var canvas: Canvas
@@ -90,7 +93,7 @@ class DonutChartView @JvmOverloads constructor(
             paint.color = invertedColors[index]
             canvas.drawArc(
                 innerFrame.toRect().toRectF(),
-                defaultStartAngle,
+                donutStartAngle,
                 degree,
                 false,
                 paint
@@ -150,6 +153,7 @@ class DonutChartView @JvmOverloads constructor(
             donutRoundCorners =
                 getBoolean(R.styleable.DonutChartAttrs_chart_donutRoundCorners, donutRoundCorners)
             donutTotal = getFloat(R.styleable.DonutChartAttrs_chart_donutTotal, donutTotal)
+            donutStartAngle = getFloat(R.styleable.DonutChartAttrs_chart_donutStartAngle, donutStartAngle)
             recycle()
         }
     }
